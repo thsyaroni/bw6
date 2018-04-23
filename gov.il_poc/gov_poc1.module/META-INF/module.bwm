@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:DataPremitions="http://www.yaelsoft.com/DataPremitions/" xmlns:SearchPaiments="http://www.tibco.com/SearchPaiments/" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:axis2="http://xsd.tns.tibco.com/bw/models/binding/soap/axis2" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_DpGpoEbMEeiZY4rdt0fzwA" targetNamespace="http://tns.tibco.com/bw/composite/gov_poc1.module" name="gov_poc1.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_h6_60EbMEeiZY4rdt0fzwA" name="Search" promote="ComponentProcess/Search">
+    <sca:interface.wsdl xmi:id="_h7FaYEbMEeiZY4rdt0fzwA" interface="http://www.tibco.com/SearchPaiments/#wsdl.interface(Search)" scaext:wsdlLocation="../Service%20Descriptors/SearchPaiments.wsdl"/>
+    <scaext:binding xsi:type="axis2:SOAPServiceBinding" xmi:id="_S76LsEbUEeiZY4rdt0fzwA" name="SOAPServiceBinding" targetNamespace="http://www.tibco.com/4e60144180c441d2b754fc01426ddef8/SOAPServiceBinding" portTypeQName="SearchPaiments:Search" transportBindingType="HTTP" attachmentStyle="SwA" modelVersion="1.2.0" portTypeWSDLLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/SearchPaiments.wsdl">
+      <bindingType xmi:id="_S76LsUbUEeiZY4rdt0fzwA"/>
+      <inboundConfiguration xsi:type="axis2:HttpTransportConfiguration" xmi:id="_Uxbi4EbUEeiZY4rdt0fzwA" endpointURI="/WebService/search" httpConnector="gov_poc1.module.HTTPConnectorResource"/>
+      <operationConfiguration xmi:id="_S76LskbUEeiZY4rdt0fzwA" operationName="SearchPayments" action="SearchPayments" actionNeeded="true">
+        <bindingType xmi:id="_S76Ls0bUEeiZY4rdt0fzwA"/>
+        <messageConfiguration xmi:id="_S76LtEbUEeiZY4rdt0fzwA" messageQName="SearchPaiments:SearchPaymentsRequest" wsdlLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/SearchPaiments.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_S76LtUbUEeiZY4rdt0fzwA" partName="parameters" partElementName="SearchPaiments:SearchPayments"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_S76LtkbUEeiZY4rdt0fzwA" messageQName="SearchPaiments:SearchPaymentsResponse" messageDirection="OUTPUT" wsdlLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/SearchPaiments.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_S76Lt0bUEeiZY4rdt0fzwA" partName="parameters" partElementName="SearchPaiments:SearchPaymentsResponse"/>
+        </messageConfiguration>
+        <context xmi:id="_S76LuEbUEeiZY4rdt0fzwA">
+          <inputMapping xmi:id="_S76LuUbUEeiZY4rdt0fzwA"/>
+          <outputMapping xmi:id="_S76LukbUEeiZY4rdt0fzwA" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_S76Lu0bUEeiZY4rdt0fzwA" bindingName="SOAPServiceBinding"/>
+  </sca:service>
+  <sca:service xmi:id="_Xh-F8kbWEeiZY4rdt0fzwA" name="payments" promote="Componentpayments/payments">
+    <sca:interface.wsdl xmi:id="_Xh-F9kbWEeiZY4rdt0fzwA" interface="http://xmlns.example.com/20180423121154PLT#wsdl.interface(payments)" scaext:wsdlLocation="../Processes/gov_poc1/module/payments.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Xh-F90bWEeiZY4rdt0fzwA" name="RestService" path="/payments/search" docBasePath="http://localhost:7777/gov_poc1.module" docResourcePath="payments" basePath="/" connector="gov_poc1.module.HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/gov_poc1.module.payments-payments.json">
+      <operation xmi:id="_Xh-F-EbWEeiZY4rdt0fzwA" operationName="get" nickname="get-payments" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_wk4UUEbXEeiZY4rdt0fzwA">
+          <parameterMapping xmi:id="_wk4UUUbXEeiZY4rdt0fzwA" parameterName="tz" parameterType="Query" dataType="string"/>
+          <parameterMapping xmi:id="_yAevoEbXEeiZY4rdt0fzwA" parameterName="p_date_start" parameterType="Query" dataType="string"/>
+          <parameterMapping xmi:id="_0CjVEEbXEeiZY4rdt0fzwA" parameterName="p_date-end" parameterType="Query" dataType="string"/>
+          <parameterMapping xmi:id="_7EcqgEbXEeiZY4rdt0fzwA" parameterName="authority" parameterType="Query" dataType="string"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Xh-F-UbWEeiZY4rdt0fzwA" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_Pym7okbYEeiZY4rdt0fzwA" name="GetData" promote="ComponentDataPermissions/GetData">
+    <sca:interface.wsdl xmi:id="_PyniskbYEeiZY4rdt0fzwA" interface="http://www.yaelsoft.com/DataPremitions/#wsdl.interface(GetData)" scaext:wsdlLocation="../Service%20Descriptors/DataPremitions.wsdl"/>
+    <scaext:binding xsi:type="axis2:SOAPServiceBinding" xmi:id="_5mV4UEbYEeiZY4rdt0fzwA" name="SOAPServiceBinding1" targetNamespace="http://www.tibco.com/669515301c6b4bdd8e8b9457e410f427/SOAPServiceBinding1" portTypeQName="DataPremitions:GetData" transportBindingType="HTTP" attachmentStyle="SwA" modelVersion="1.2.0" portTypeWSDLLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/DataPremitions.wsdl">
+      <bindingType xmi:id="_5mV4UUbYEeiZY4rdt0fzwA"/>
+      <inboundConfiguration xsi:type="axis2:HttpTransportConfiguration" xmi:id="_6ftwUEbYEeiZY4rdt0fzwA" endpointURI="/WebService/getData" httpConnector="gov_poc1.module.HTTPConnectorResource"/>
+      <operationConfiguration xmi:id="_5mV4UkbYEeiZY4rdt0fzwA" description="" operationName="GetDataPermissions" action="GetDataPermissions" actionNeeded="true">
+        <bindingType xmi:id="_5mV4U0bYEeiZY4rdt0fzwA"/>
+        <messageConfiguration xmi:id="_5mV4VEbYEeiZY4rdt0fzwA" messageQName="DataPremitions:GetDataPermissionsRequest" wsdlLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/DataPremitions.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_5mV4VUbYEeiZY4rdt0fzwA" partName="parameters" partElementName="DataPremitions:GetDataPermissionsRequest"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_5mV4VkbYEeiZY4rdt0fzwA" messageQName="DataPremitions:GetDataPermissionsResponse" messageDirection="OUTPUT" wsdlLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/DataPremitions.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_5mV4V0bYEeiZY4rdt0fzwA" partName="parameters" partElementName="DataPremitions:DataPermissionsRequest"/>
+        </messageConfiguration>
+        <context xmi:id="_5mV4XkbYEeiZY4rdt0fzwA">
+          <inputMapping xmi:id="_5mV4X0bYEeiZY4rdt0fzwA"/>
+          <outputMapping xmi:id="_5mV4YEbYEeiZY4rdt0fzwA" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_5mV4WEbYEeiZY4rdt0fzwA" operationName="GetPaymentsAuthorities" action="GetPaymentsAuthorities" actionNeeded="true">
+        <bindingType xmi:id="_5mV4WUbYEeiZY4rdt0fzwA"/>
+        <messageConfiguration xmi:id="_5mV4WkbYEeiZY4rdt0fzwA" messageQName="DataPremitions:GetPaymentsAuthoritiesRequest" wsdlLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/DataPremitions.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_5mV4W0bYEeiZY4rdt0fzwA" partName="parameters" partElementName="DataPremitions:GetPaymentsAuthoritiesRequest"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_5mV4XEbYEeiZY4rdt0fzwA" messageQName="DataPremitions:GetPaymentsAuthoritiesResponse" messageDirection="OUTPUT" wsdlLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/DataPremitions.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_5mV4XUbYEeiZY4rdt0fzwA" partName="parameters" partElementName="DataPremitions:PaymentsAuthoritiesRequest"/>
+        </messageConfiguration>
+        <context xmi:id="_5mV4YUbYEeiZY4rdt0fzwA">
+          <inputMapping xmi:id="_5mV4YkbYEeiZY4rdt0fzwA"/>
+          <outputMapping xmi:id="_5mV4Y0bYEeiZY4rdt0fzwA" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_5mV4ZEbYEeiZY4rdt0fzwA" bindingName="SOAPServiceBinding1"/>
+  </sca:service>
+  <sca:property xmi:id="_D_FgsEbMEeiZY4rdt0fzwA" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_D_LnUEbMEeiZY4rdt0fzwA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_D_PRsEbMEeiZY4rdt0fzwA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_D_S8EEbMEeiZY4rdt0fzwA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_D_V_YEbMEeiZY4rdt0fzwA" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_D_ZCsEbMEeiZY4rdt0fzwA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_D_ctEEbMEeiZY4rdt0fzwA" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_D_fwYEbMEeiZY4rdt0fzwA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_D_jawEbMEeiZY4rdt0fzwA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_fT-F0EbaEeiZY4rdt0fzwA" name="Property" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_D1Vu0EbMEeiZY4rdt0fzwA" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_D1Vu0UbMEeiZY4rdt0fzwA" processName="gov_poc1.module.payment_search_ws"/>
+    <sca:service xmi:id="_h683gEbMEeiZY4rdt0fzwA" name="Search">
+      <sca:interface.wsdl xmi:id="_h69ekEbMEeiZY4rdt0fzwA" interface="http://www.tibco.com/SearchPaiments/#wsdl.interface(Search)" scaext:wsdlLocation="../Service%20Descriptors/SearchPaiments.wsdl"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_Xh0U8EbWEeiZY4rdt0fzwA" name="Componentpayments" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Xh0U8UbWEeiZY4rdt0fzwA" processName="gov_poc1.module.payments"/>
+    <sca:service xmi:id="_Xh-F8EbWEeiZY4rdt0fzwA" name="payments">
+      <sca:interface.wsdl xmi:id="_Xh-F8UbWEeiZY4rdt0fzwA" interface="http://xmlns.example.com/20180423121154PLT#wsdl.interface(payments)" scaext:wsdlLocation="../Processes/gov_poc1/module/payments.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_Pye_0EbYEeiZY4rdt0fzwA" name="ComponentDataPermissions" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Pye_0UbYEeiZY4rdt0fzwA" processName="gov_poc1.module.DataPermissions"/>
+    <sca:service xmi:id="_Pym7oEbYEeiZY4rdt0fzwA" name="GetData">
+      <sca:interface.wsdl xmi:id="_Pym7oUbYEeiZY4rdt0fzwA" interface="http://www.yaelsoft.com/DataPremitions/#wsdl.interface(GetData)" scaext:wsdlLocation="../Service%20Descriptors/DataPremitions.wsdl"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

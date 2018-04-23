@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_NY9UAUFDEei8ucBcE-NEWA" name="gov_poc1.module.JDBCConnection" type="jdbc:JdbcDataSource">
+  <jndi:reference xmi:id="_NZZ_8EFDEei8ucBcE-NEWA" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
+  <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_NZZ_8UFDEei8ucBcE-NEWA" username="tibco" password="#!bgKo7nEtjZVk6LQs5w/2HkfbnWXTD45M">
+    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_NZZ_8kFDEei8ucBcE-NEWA" jdbcDriver="tibcosoftwareinc.jdbc.sqlserver.SQLServerDriver" dbURL="jdbc:tibcosoftwareinc:sqlserver://localhost:1433;DatabaseName=gov_il"/>
+  </jndi:configuration>
+</jndi:namedResource>

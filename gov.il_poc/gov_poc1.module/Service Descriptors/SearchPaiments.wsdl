@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.tibco.com/SearchPaiments/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SearchPaiments" targetNamespace="http://www.tibco.com/SearchPaiments/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.tibco.com/SearchPaiments/">
+      <xsd:element name="SearchPayments">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="tz" type="xsd:string" minOccurs="0" />
+          	<xsd:element name="p_date_start" type="xsd:string"
+          		minOccurs="0">
+          	</xsd:element>
+          	<xsd:element name="p_date-end" type="xsd:string"
+          		minOccurs="0">
+          	</xsd:element>
+          	<xsd:element name="authority" type="xsd:string" minOccurs="0"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SearchPaymentsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="citizens" minOccurs="0" maxOccurs="unbounded" type="tns:t_citizen"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="t_citizen">
+      	<xsd:sequence>
+    		<xsd:element name="id" type="xsd:string"></xsd:element>
+    		<xsd:element name="PayDate" type="xsd:dateTime"></xsd:element>
+    		<xsd:element name="authority" type="xsd:string"></xsd:element>
+    		<xsd:element name="Total" type="xsd:double"></xsd:element>
+    		<xsd:element name="ConfirmationCode" type="xsd:string"></xsd:element>
+    	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SearchPaymentsRequest">
+    <wsdl:part element="tns:SearchPayments" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="SearchPaymentsResponse">
+    <wsdl:part element="tns:SearchPaymentsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Search">
+    <wsdl:operation name="SearchPayments">
+      <wsdl:input message="tns:SearchPaymentsRequest"/>
+      <wsdl:output message="tns:SearchPaymentsResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchPaimentsSOAP" type="tns:Search">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SearchPayments">
+      <soap:operation soapAction="http://www.tibco.com/SearchPaiments/SearchPayments"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SearchPaiments">
+    <wsdl:port binding="tns:SearchPaimentsSOAP" name="SearchPaimentsSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
