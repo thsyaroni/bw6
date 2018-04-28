@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/user_auth" xmlns:tns="http://www.example.org/user_auth" elementFormDefault="qualified">
+
+    <element name="userAuthRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="username" type="string"></element>
+    		</sequence>
+    	</complexType></element>
+
+    <element name="userAuthResponce">
+    	<complexType>
+    		<sequence>
+    			<element name="auths" minOccurs="0" maxOccurs="unbounded" type="tns:t_service">
+    			
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+<complexType name="t_service">
+<sequence>
+    			<element name="code" type="string"></element>
+    			<element name="ServiceCode" type="string"></element>
+    		</sequence>
+</complexType>
+  
+</schema>

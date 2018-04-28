@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Payment" xmlns:tns="http://www.example.org/Payment" elementFormDefault="qualified">
+
+    <complexType name="t_citizen">
+    	<sequence>
+    		<element name="id" type="string"></element>
+    		<element name="PayDate" type="dateTime"></element>
+    		<element name="authority" type="string"></element>
+    		<element name="Total" type="double"></element>
+    		<element name="ConfirmationCode" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="citizens">
+    	<complexType>
+    		<sequence>
+    			<element name="citizen" type="tns:t_citizen" minOccurs="0" maxOccurs="unbounded"></element>
+    		</sequence>
+    	</complexType></element>
+</schema>

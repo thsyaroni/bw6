@@ -1,0 +1,102 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "0.0.0.0:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/payments/search" : {
+      "get" : {
+        "description" : "",
+        "operationId" : "get-payments",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "tz",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "authority",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "p_date_start",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "p_date-end",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a citizens to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/citizens"
+            },
+            "headers" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "citizen" : {
+      "type" : "object",
+      "required" : [ "PayDate", "ConfirmationCode", "authority", "Total", "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "PayDate" : {
+          "type" : "string"
+        },
+        "authority" : {
+          "type" : "string"
+        },
+        "Total" : {
+          "type" : "number"
+        },
+        "ConfirmationCode" : {
+          "type" : "string"
+        }
+      }
+    },
+    "citizens" : {
+      "type" : "object",
+      "properties" : {
+        "citizen" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/citizen",
+            "uniqueItems" : false
+          }
+        }
+      }
+    }
+  }
+}
