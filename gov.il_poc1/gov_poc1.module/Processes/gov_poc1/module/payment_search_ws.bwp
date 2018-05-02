@@ -875,9 +875,6 @@
     <bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
         location="../../../Service%20Descriptors/SearchPaiments.wsdl" namespace="http://www.tibco.com/SearchPaiments/"/>
     <bpws:partnerLinks>
-        <bpws:partnerLink myRole="use" name="Search"
-            partnerLinkType="ns0:partnerLinkType"
-            sca-bpel:ignore="false" sca-bpel:service="Search"/>
         <bpws:partnerLink name="payment_search_logic"
             partnerLinkType="ns0:partnerLinkType" partnerRole="use"
             sca-bpel:ignore="true"
@@ -886,6 +883,9 @@
                 processConfigurationName=""
                 processName="gov_poc1.module.payment_search_logic" serviceName="Search"/>
         </bpws:partnerLink>
+        <bpws:partnerLink myRole="use" name="Search"
+            partnerLinkType="ns0:partnerLinkType"
+            sca-bpel:ignore="false" sca-bpel:service="Search"/>
     </bpws:partnerLinks>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"

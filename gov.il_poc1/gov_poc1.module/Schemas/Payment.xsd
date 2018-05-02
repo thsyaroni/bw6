@@ -3,11 +3,25 @@
 
     <complexType name="t_citizen">
     	<sequence>
-    		<element name="id" type="string"></element>
-    		<element name="PayDate" type="dateTime"></element>
-    		<element name="authority" type="string"></element>
-    		<element name="Total" type="double"></element>
-    		<element name="ConfirmationCode" type="string"></element>
+    		<element name="id" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="PayDate" type="dateTime" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="authority" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="Total" type="double" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="ConfirmationCode" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="fileName" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="isLast" type="string" minOccurs="0" maxOccurs="1"></element>
     	</sequence>
     </complexType>
 

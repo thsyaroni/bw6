@@ -5,15 +5,15 @@
       <xsd:element name="SearchPayments">
         <xsd:complexType>
           <xsd:sequence>
-          	<xsd:element name="tz" type="xsd:string" minOccurs="0" />
+          	<xsd:element name="tz" type="xsd:string" minOccurs="0" maxOccurs="1"/>
           	<xsd:element name="p_date_start" type="xsd:string"
-          		minOccurs="0">
+          		minOccurs="0" maxOccurs="1">
           	</xsd:element>
           	<xsd:element name="p_date-end" type="xsd:string"
-          		minOccurs="0">
+          		minOccurs="0" maxOccurs="1">
           	</xsd:element>
           	<xsd:element name="authority" type="xsd:string"
-          		minOccurs="0">
+          		minOccurs="0" maxOccurs="1">
           	</xsd:element>
           	<xsd:element name="username" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
           </xsd:sequence>

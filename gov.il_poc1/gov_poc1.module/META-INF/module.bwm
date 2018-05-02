@@ -5,7 +5,7 @@
     <scaext:binding xsi:type="axis2:SOAPServiceBinding" xmi:id="_S76LsEbUEeiZY4rdt0fzwA" name="SOAPServiceBinding" targetNamespace="http://www.tibco.com/4e60144180c441d2b754fc01426ddef8/SOAPServiceBinding" portTypeQName="SearchPaiments:Search" transportBindingType="HTTP" attachmentStyle="SwA" modelVersion="1.2.0" portTypeWSDLLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/SearchPaiments.wsdl">
       <bindingType xmi:id="_S76LsUbUEeiZY4rdt0fzwA"/>
       <inboundConfiguration xsi:type="axis2:HttpTransportConfiguration" xmi:id="_Uxbi4EbUEeiZY4rdt0fzwA" endpointURI="/WebService/search" httpConnector="gov_poc1.module.HTTPConnectorResource"/>
-      <operationConfiguration xmi:id="_S76LskbUEeiZY4rdt0fzwA" operationName="SearchPayments" action="SearchPayments" actionNeeded="true">
+      <operationConfiguration xmi:id="_S76LskbUEeiZY4rdt0fzwA" description="" operationName="SearchPayments" action="SearchPayments" actionNeeded="true">
         <bindingType xmi:id="_S76Ls0bUEeiZY4rdt0fzwA"/>
         <messageConfiguration xmi:id="_S76LtEbUEeiZY4rdt0fzwA" messageQName="SearchPaiments:SearchPaymentsRequest" wsdlLocation="platform:/resource/gov_poc1.module/Service%20Descriptors/SearchPaiments.wsdl">
           <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_S76LtUbUEeiZY4rdt0fzwA" partName="parameters" partElementName="SearchPaiments:SearchPayments"/>
@@ -24,13 +24,15 @@
   <sca:service xmi:id="_Xh-F8kbWEeiZY4rdt0fzwA" name="payments" promote="Componentpayments/payments">
     <sca:interface.wsdl xmi:id="_Xh-F9kbWEeiZY4rdt0fzwA" interface="http://xmlns.example.com/20180423121154PLT#wsdl.interface(payments)" scaext:wsdlLocation="../Processes/gov_poc1/module/payments.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Xh-F90bWEeiZY4rdt0fzwA" name="RestService" path="/payments/search" docBasePath="http://localhost:7777/gov_poc1.module" docResourcePath="payments" basePath="/" connector="gov_poc1.module.HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/gov_poc1.module.payments-payments.json">
-      <operation xmi:id="_Xh-F-EbWEeiZY4rdt0fzwA" operationName="get" nickname="get-payments" httpMethod="GET" responseStyle="element">
+      <operation xmi:id="_Xh-F-EbWEeiZY4rdt0fzwA" operationName="get" nickname="get-payments" httpMethod="GET" responseStyle="array">
         <parameters xmi:id="_wk4UUEbXEeiZY4rdt0fzwA">
           <parameterMapping xmi:id="_wk4UUUbXEeiZY4rdt0fzwA" parameterName="tz" parameterType="Query" dataType="string"/>
           <parameterMapping xmi:id="_yAevoEbXEeiZY4rdt0fzwA" parameterName="p_date_start" parameterType="Query" dataType="string"/>
           <parameterMapping xmi:id="_0CjVEEbXEeiZY4rdt0fzwA" parameterName="p_date-end" parameterType="Query" dataType="string"/>
           <parameterMapping xmi:id="_7EcqgEbXEeiZY4rdt0fzwA" parameterName="authority" parameterType="Query" dataType="string"/>
           <parameterMapping xmi:id="_Tn13kEqYEeiGq5g5Ycwe2g" parameterName="username" parameterType="Query" dataType="string"/>
+          <parameterMapping xmi:id="_ZipJ4EyMEeiwEbcL8RwTCg" parameterName="page" parameterType="Query" dataType="string"/>
+          <parameterMapping xmi:id="_b0MVwEyMEeiwEbcL8RwTCg" parameterName="maxpage" parameterType="Query" dataType="string"/>
         </parameters>
         <responseStatus xmi:id="_gIoeoEqYEeiGq5g5Ycwe2g" statusCode="200" reasonPhrase="OK" dataType="string"/>
         <responseStatus xmi:id="_geFxQEqYEeiGq5g5Ycwe2g" statusCode="401" reasonPhrase="Unauthorized" dataType="string"/>
@@ -86,6 +88,7 @@
   <sca:property xmi:id="_rJFVAEl_Eei9R47gypWB3w" name="dburl" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_tsnBsEl_Eei9R47gypWB3w" name="timeOut_sec" type="XMLSchema:int" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_L0Gb4EmPEei9R47gypWB3w" name="port" type="XMLSchema:int" publicAccess="true"/>
+  <sca:property xmi:id="_vVrtgEyOEeiwEbcL8RwTCg" name="filesDir" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_D1Vu0EbMEeiZY4rdt0fzwA" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_D1Vu0UbMEeiZY4rdt0fzwA" processName="gov_poc1.module.payment_search_ws"/>
     <sca:service xmi:id="_h683gEbMEeiZY4rdt0fzwA" name="Search">
